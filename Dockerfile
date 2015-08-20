@@ -5,7 +5,7 @@ MAINTAINER mwaeckerlin
 
 # can be overwritten wth option -e name=value
 # password is mandatory: -e PASSWORD=
-ENV OPTIONS -upgradewallet -printtoconsole
+ENV OPTIONS -debug-net -upgradewallet -printtoconsole
 ENV USER bitcoinrpc
 ENV PASSWORD ""
 
@@ -37,4 +37,4 @@ CMD test -n "${PASSWORD}" || ( \
       echo "rpcuser=${USER}"; \
       echo "rpcpassword=${PASSWORD}"; \
     ) > /data/bitcoin.conf && chmod go= /data/bitcoin.conf; \
-    bitcoind -datadir=/data ${OPTIONS};
+    bitcoind -datadir=/data -server ${OPTIONS};
