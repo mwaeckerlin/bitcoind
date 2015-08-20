@@ -36,5 +36,7 @@ CMD test -n "${PASSWORD}" || ( \
     test -f /data/bitcoin.conf || ( \
       echo "rpcuser=${USER}"; \
       echo "rpcpassword=${PASSWORD}"; \
+      echo "server=1"; \
+      echo "rpcallowip=::/0"; \
     ) > /data/bitcoin.conf && chmod go= /data/bitcoin.conf; \
-    bitcoind -datadir=/data -server ${OPTIONS};
+    bitcoind -datadir=/data ${OPTIONS};
